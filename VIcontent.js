@@ -26,7 +26,7 @@ window.I18N.vi = {
   nav_pricing: `Bảng giá`,
   nav_proof: `Bằng chứng`,
   nav_demo: `Yêu cầu demo Newton`,
-  header_cta: `Nhận báo cáo benchmark 2026`,
+  header_cta: `Yêu cầu demo Newton`,
 
   /* ---- hero ---- */
   hero_eyebrow: `APPLE ADS · TĂNG TRƯỞNG iOS CHO STUDIO APP VIỆT NAM`,

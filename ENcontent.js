@@ -19,7 +19,7 @@ window.I18N.en = {
   nav_pricing: `Pricing`,
   nav_proof: `Proof`,
   nav_demo: `Request Newton demo`,
-  header_cta: `Get the 2026 benchmark`,
+  header_cta: `Request Newton demo`,
 
   /* ---- hero ---- */
   hero_eyebrow: `APPLE ADS · iOS GROWTH FOR VIETNAM APP STUDIOS`,
