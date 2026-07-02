@@ -1,57 +1,94 @@
 /**
  * Affle Landing — Lead form backend (Google Apps Script)
- * Receives POSTs from site/index.html, appends a row to a Google Sheet,
- * and emails a notification. Free, no third-party service.
+ * Receives POSTs from the landing pages, appends a row to a Google Sheet,
+ * and emails a notification. One web app serves BOTH forms.
+ *
+ * Two forms → two tabs in the SAME spreadsheet, routed by `request_type`:
+ *   • site/index.html  (sign-up / demo / etc.)  → "Signup" tab
+ *   • site/report.html (2026 report waitlist)   → "Report" tab
+ *       report.html sends request_type = "report"; everything else is a sign-up.
  *
  * ── SETUP ─────────────────────────────────────────────────────────
- * 1. Create a Google Sheet. Copy its ID from the URL
- *    (https://docs.google.com/spreadsheets/d/<THIS_IS_THE_ID>/edit).
- * 2. Extensions ▸ Apps Script. Paste this file in.
- * 3. Fill in SHEET_ID and NOTIFY_EMAIL below.
- * 4. Run `setupSheet` once (authorize when prompted) to add the header row.
- * 5. Deploy ▸ New deployment ▸ type "Web app":
- *       - Execute as: Me
- *       - Who has access: Anyone
- *    Copy the /exec URL and paste it into FORM_ENDPOINT in index.html.
- * 6. Re-deploy (new version) whenever you change this script.
+ * 1. Open the sheet ▸ Extensions ▸ Apps Script. Paste this whole file in
+ *    (replacing the old version).
+ * 2. Confirm SHEET_ID / NOTIFY_EMAIL below.
+ * 3. Run `setupSheets` once (authorize when prompted) to create the
+ *    "Signup" and "Report" tabs with header rows (skips any that exist).
+ * 4. Deploy ▸ Manage deployments ▸ (your existing Web app) ▸ Edit ▸
+ *    Version: "New version" ▸ Deploy.  The /exec URL stays the SAME,
+ *    so both index.html and report.html keep working with no URL change.
+ *    (First-time only: Deploy ▸ New deployment ▸ Web app ▸ Execute as: Me,
+ *     Who has access: Anyone ▸ copy the /exec URL into both HTML files.)
  * ──────────────────────────────────────────────────────────────────
  */
 
 var SHEET_ID     = '1Ee1Z_uc1q3pgNjRv2uWa3wg0DItxhCw26lglb4-qSYk'; // "Newton Leads" sheet
-var SHEET_NAME   = 'Leads';
 var NOTIFY_EMAIL = 'ravyn.do@affle.com'; // work email; set to '' to disable once Slack is live
 
 // Slack Incoming Webhook — paste the https://hooks.slack.com/services/... URL here.
-// Create one: Slack ▸ your workspace ▸ Apps ▸ "Incoming Webhooks" ▸ Add to a channel (e.g. #newton-leads).
 // Leave '' to skip Slack (email still fires).
 var SLACK_WEBHOOK_URL = '';
 
-// Order matters: matches HEADERS and the appendRow() below.
-var FIELDS = [
-  'full_name', 'email', 'phone', 'company', 'job_title',
-  'industry', 'objective', 'budget', 'message', 'request_type'
-];
+// Each form's destination tab + the columns it writes (order matters).
+var FORMS = {
+  signup: {
+    sheet:   'Signup',
+    fields:  ['full_name', 'email', 'phone', 'company', 'job_title',
+              'industry', 'objective', 'budget', 'message', 'request_type'],
+    headers: ['Timestamp', 'Full name', 'Email', 'Phone', 'Company',
+              'Job title', 'Industry', 'Objective', 'Budget', 'Message', 'Request type']
+  },
+  report: {
+    sheet:   'Report',
+    fields:  ['full_name', 'email', 'industry', 'running_apple_ads', 'request_type'],
+    headers: ['Timestamp', 'Full name', 'Email', 'Vertical', 'Running Apple Ads?', 'Request type']
+  }
+};
 
 var REQUEST_LABELS = {
   session:    'Strategy session',
   demo:       'Product demo',
   case_study: 'Case studies',
   benchmark:  'Benchmark report',
-  signup:     'Sign-up'
+  signup:     'Sign-up',
+  report:     'Report waitlist'
 };
+
+var FIELD_LABELS = {
+  full_name: 'Name', email: 'Email', phone: 'Phone', company: 'Company',
+  job_title: 'Job title', industry: 'Vertical', objective: 'Objective',
+  budget: 'Budget', message: 'Message', running_apple_ads: 'Running Apple Ads?'
+};
+
+// Pick the right form config from the incoming payload.
+function configFor(p) {
+  return (p && p.request_type === 'report') ? FORMS.report : FORMS.signup;
+}
+
+// Return the tab, creating it (with a header row) if it doesn't exist yet.
+function getOrCreateSheet(ss, cfg) {
+  var sheet = ss.getSheetByName(cfg.sheet);
+  if (!sheet) sheet = ss.insertSheet(cfg.sheet);
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, cfg.headers.length).setValues([cfg.headers]).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
 
 function doPost(e) {
   try {
     var p = (e && e.parameter) ? e.parameter : {};
-    var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME)
-              || SpreadsheetApp.openById(SHEET_ID).insertSheet(SHEET_NAME);
+    var cfg = configFor(p);
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sheet = getOrCreateSheet(ss, cfg);
 
     var now = new Date();
     var row = [now];
-    FIELDS.forEach(function (f) { row.push(p[f] || ''); });
+    cfg.fields.forEach(function (f) { row.push(p[f] || ''); });
     sheet.appendRow(row);
 
-    sendNotification(p, now);
+    sendNotification(p, now, cfg);
     return json({ ok: true });
   } catch (err) {
     return json({ ok: false, error: String(err) });
@@ -63,25 +100,20 @@ function doGet() {
   return json({ ok: true, service: 'Affle lead form', time: new Date() });
 }
 
-function sendNotification(p, when) {
+function sendNotification(p, when, cfg) {
   var typeLabel = REQUEST_LABELS[p.request_type] || p.request_type || 'Lead';
-  var subject = '🍎 New Newton lead — ' + typeLabel + ' — ' + (p.company || p.full_name || 'Unknown');
-  var lines = [
-    'Request type: ' + typeLabel,
-    'Received: ' + when,
-    '',
-    'Name:       ' + (p.full_name || ''),
-    'Email:      ' + (p.email || ''),
-    'Phone:      ' + (p.phone || ''),
-    'Company:    ' + (p.company || ''),
-    'Job title:  ' + (p.job_title || ''),
-    'Industry:   ' + (p.industry || ''),
-    'Objective:  ' + (p.objective || ''),
-    'Budget:     ' + (p.budget || ''),
-    '',
-    'Message:',
-    (p.message || '(none)')
-  ];
+  var subject = '🍎 New Newton lead — ' + typeLabel + ' — ' +
+                (p.company || p.full_name || p.email || 'Unknown');
+
+  var lines = ['Request type: ' + typeLabel, 'Form: ' + cfg.sheet, 'Received: ' + when, ''];
+  cfg.fields.forEach(function (f) {
+    if (f === 'request_type') return;
+    if (f === 'message') return; // printed last, as a block
+    lines.push((FIELD_LABELS[f] || f) + ': ' + (p[f] || ''));
+  });
+  if (cfg.fields.indexOf('message') !== -1) {
+    lines.push('', 'Message:', (p.message || '(none)'));
+  }
   var body = lines.join('\n');
 
   // Slack first (preferred channel). Never let a Slack failure lose the lead.
@@ -110,12 +142,9 @@ function json(obj) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-// Run once after pasting in your SHEET_ID to create the header row.
-function setupSheet() {
+// Run once after pasting this in — creates both tabs with header rows
+// (leaves any existing tab and its data untouched).
+function setupSheets() {
   var ss = SpreadsheetApp.openById(SHEET_ID);
-  var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
-  var HEADERS = ['Timestamp', 'Full name', 'Email', 'Phone', 'Company',
-                 'Job title', 'Industry', 'Objective', 'Budget', 'Message', 'Request type'];
-  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
-  sheet.setFrozenRows(1);
+  Object.keys(FORMS).forEach(function (k) { getOrCreateSheet(ss, FORMS[k]); });
 }

@@ -3,6 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1029706482795468');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1029706482795468&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
   <title data-i18n="_title">The 2026 Apple Ads Report — Newton</title>
   <meta name="description" data-i18n="_desc" content="The 2026 Apple Ads Report from Newton — releasing August 2026. What Apple's new multi-slot App Store auction means for your CPI, and how Vietnamese businesses win high-value Apple users. Official Apple Ads Partner." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -289,7 +304,7 @@
     });
 
     // ---- Report form → Google Apps Script (same endpoint as index.html) ----
-    var FORM_ENDPOINT = "https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec";
+    var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwqfBqTslZcxJrfOkIN7xa32cONvDzxjkz9pU44Wqp_qgyMVha0WIJpra2w1UDvrjEVzw/exec";
     var form = document.getElementById("reportForm");
 
     // Reject free / personal email providers — only accept work emails.
@@ -330,6 +345,7 @@
         .then(function () {
           form.reset();
           document.getElementById("reportStatus").hidden = false;
+          if (window.fbq) fbq("track", "Lead", { content_name: "report" });
         })
         .catch(function () {
           alert("Something went wrong — please try again.");
