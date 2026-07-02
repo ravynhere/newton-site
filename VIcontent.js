@@ -24,7 +24,7 @@ window.I18N.vi = {
   nav_compare: `Newton vs In-house`,
   nav_platform: `Nền tảng`,
   nav_pricing: `Bảng giá`,
-  nav_proof: `Bằng chứng`,
+  nav_proof: `Đối tác`,
   nav_demo: `Yêu cầu demo Newton`,
   header_cta: `Yêu cầu demo Newton`,
 
@@ -32,7 +32,7 @@ window.I18N.vi = {
   hero_eyebrow: `APPLE ADS · TĂNG TRƯỞNG iOS CHO STUDIO APP VIỆT NAM`,
   hero_h1: `Trả tiền cho chuyển đổi trên Apple Ads với Newton`,
   hero_lede: `Newton vận hành Apple Search Ads của bạn với <span class="accent">auto-bidding</span>, <span class="accent">đo lường toàn phễu</span> và <span class="accent">thiết lập trang sản phẩm tùy chỉnh</span> ở quy mô lớn — giúp bạn giảm CAC và chỉ trả tiền cho người dùng thực sự chuyển đổi.`,
-  hero_cta: `Nhận Apple Ads Benchmark 2026 →`,
+  hero_cta: `Liên hệ với chúng tôi →`,
   hero_trust: `Đối tác chính thức của Apple Ads · 3.000+ chiến dịch tăng trưởng app ·  Thuộc hệ sinh thái Affle`,
 
   /* ---- opportunity ---- */
@@ -97,26 +97,26 @@ window.I18N.vi = {
 
   /* ---- platform ---- */
   plat_kicker: `Nền tảng`,
-  plat_title: `Mở rộng khả năng hiển thị với ASO dẫn dắt bởi nền tảng`,
+  plat_title: `Tối ưu khả năng hiển thị của App Store dựa trên dữ liệu trực tiếp từ Apple`,
   /* ASO engine — deck slide 14 */
-  aso_sub: `Engine khám phá ưu tiên AI của Newton cho ASO — với <b>Niko</b> ở lõi — thay việc phỏng đoán thủ công bằng tăng trưởng liên tục do nền tảng vận hành, xây dựng cho những thị trường cạnh tranh nhất.`,
+  aso_sub: `Thay vì tối ưu thủ công, công cụ khám phá ứng dụng của Newton dựa trên tín hiệu từ Apple, tự động tối ưu ứng dụng. Đây là một trong các công cụ được ưa chuộng nhất cho các ứng dụng hiển thị tại những thị trường lớn`,
   a1_t: `Từ khóa, đối thủ &amp; thị trường`,
-  a1_b: `Theo dõi từ khóa, biến động thị trường và custom product pages của đối thủ.`,
-  a2_t: `AI store builder`,
-  a2_b: `Xây dựng listing tối ưu bằng gợi ý AI cho hình ảnh và nội dung.`,
+  a1_b: `Theo dõi từ khóa, xu hướng thị trường và các trang sản phẩm chuyển đổi cao của đối thủ.`,
+  a2_t: `Trình tạo store bằng AI`,
+  a2_b: `Xây dựng listing tối ưu cho hình ảnh và nội dung.`,
   a3_t: `Dự đoán &amp; dự báo`,
   a3_b: `Dự báo lượt tải, tiềm năng xếp hạng và tỷ lệ chuyển đổi bằng mô hình dự đoán.`,
   a4_t: `Phân tích tác động`,
-  a4_b: `Đo lường chính xác tác động của mỗi thay đổi tối ưu — trước và sau khi cập nhật.`,
+  a4_b: `Đo lường chính xác ảnh hưởng của mỗi thay đổi trước và sau khi cập nhật.`,
   a5_t: `Hệ thống mở rộng`,
-  a5_b: `Biến ASO từ công việc thủ công thành tăng trưởng liên tục do nền tảng vận hành.`,
+  a5_b: `Biến ASO từ tối ưu thủ công thành tăng trưởng liên tục do nền tảng vận hành.`,
   /* Telescope — deck slide 16 */
   tele_eyebrow: `Telescope`,
-  tele_head: `Scorecard tăng trưởng tất-cả-trong-một.`,
-  tele_sub: `Module nâng cao hợp nhất Apple Ads, custom product pages và dữ liệu ASO vào một góc nhìn duy nhất — để bạn hành động trên mọi đòn bẩy tăng trưởng.`,
-  tele_c1: `Quyết định thông minh hơn`,
-  tele_c2: `Phát hiện cơ hội nhanh hơn`,
-  tele_c3: `Hiệu suất mạnh hơn`,
+  tele_head: `Scorecard tăng trưởng toàn diện`,
+  tele_sub: `Module nâng cao tích hợp Apple Ads, trang sản phẩm tùy chỉnh và dữ liệu ASO vào một giao diện thống nhất, giúp bạn kiểm soát và ra quyết định chính xác`,
+  tele_c1: `Hiệu suất tốt hơn`,
+  tele_c2: `Nhận diện cơ hội nhanh hơn`,
+  tele_c3: `Quyết định nhanh và chính xác`,
   demo_cta: `Nhận demo nền tảng Newton →`,
 
   /* ---- CPCU ---- */
@@ -126,7 +126,7 @@ window.I18N.vi = {
   cpcu_cta: `Liên hệ chúng tôi`,
 
   /* ---- proof ---- */
-  proof_kicker: `Bằng chứng`,
+  proof_kicker: `Đối tác`,
   proof_title: `Được các thương hiệu hàng đầu tin dùng`,
   proof_cta: `Nhận case study →`,
   case1_badge: `Game · Mỹ / cạnh tranh cao`,
@@ -195,7 +195,7 @@ window.I18N.vi = {
   goal_3: `Mua hàng / doanh thu`,
   goal_4: `Khác`,
   form_submit: `Liên hệ chúng tôi →`,
-  form_thanks: `Cảm ơn bạn — chúng tôi sẽ liên hệ trong vòng 1 ngày làm việc để giới thiệu Newton và cách bắt đầu.`,
+  form_thanks: `Cảm ơn bạn — chuyên gia của Newton sẽ liên hệ và tư vấn bạn trong vòng 1 ngày làm việc`,
 
   /* ---- footer ---- */
   foot_blurb: `Newton by Affle — tăng trưởng app iOS dựa trên hiệu suất.`,
