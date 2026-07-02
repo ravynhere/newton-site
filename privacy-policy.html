@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="_title">Security Policy — Newton</title>
+  <meta name="description" content="Security Policy for Newton — how we protect the confidentiality, integrity and availability of client and customer data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ============ Legal-page styles (layered on style.css) ============ -->
+  <style>
+    .legal { background: #fff; }
+    .legal .wrap { max-width: 820px; }
+    .legal h1 { color: var(--navy); font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin: 0 0 6px; line-height: 1.12; }
+    .legal .updated { color: var(--muted); font-size: 14px; font-weight: 700; margin: 0 0 28px; }
+    .legal .intro { color: var(--ink); font-size: 16.5px; margin: 0 0 10px; }
+    .legal h2 {
+      color: var(--navy); font-size: clamp(19px, 2.6vw, 23px); font-weight: 800;
+      margin: 36px 0 10px; padding-top: 8px;
+    }
+    .legal p, .legal li { color: var(--ink); font-size: 15.5px; line-height: 1.65; }
+    .legal ul { padding-left: 22px; margin: 8px 0 14px; }
+    .legal li { margin-bottom: 6px; }
+    .legal a { color: var(--teal-dark); text-decoration: underline; }
+    .legal a:hover { color: var(--teal); }
+    .legal .note {
+      background: var(--light); border-left: 4px solid var(--amber); border-radius: 8px;
+      padding: 14px 18px; color: var(--ink); font-size: 14px; margin: 10px 0 6px;
+    }
+    .legal .toc { background: var(--light); border: 1px solid var(--hair); border-radius: 14px; padding: 22px 26px; margin: 4px 0 20px; }
+    .legal .toc h2 { margin: 0 0 10px; font-size: 16px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+    .legal .toc ol { margin: 0; padding-left: 20px; }
+    .legal .toc a { text-decoration: none; font-weight: 600; }
+    .legal .toc a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER (shared menu) ============ -->
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="media/newton_logo.png" alt="Newton" /></a>
+    <nav id="site-nav">
+      <a href="index.html#opportunity" data-i18n="nav_opp">Why Apple Ads</a>
+      <a href="index.html#platform" data-i18n="nav_platform">Why Newton</a>
+      <a href="index.html#compare" data-i18n="nav_compare">Newton vs in-house</a>
+      <a href="index.html#cpcu" data-i18n="nav_pricing">Pricing</a>
+      <a href="index.html#proof" data-i18n="nav_proof">Proof</a>
+      <a href="index.html#lead" data-i18n="nav_demo">Request Newton demo</a>
+    </nav>
+    <div class="header-right">
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+      <button class="lang-btn" type="button" data-lang="vi">VI</button>
+      <a class="btn btn-primary btn-sm" href="index.html#lead" data-i18n="header_cta">Request Newton demo</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SECURITY POLICY (replicated from newtonco.ai/security) ============ -->
+  <section class="legal">
+    <div class="wrap">
+      <h1>Security Policy for Newton</h1>
+
+      <div class="toc">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#s1">Introduction</a></li>
+          <li><a href="#s2">Scope</a></li>
+          <li><a href="#s3">Data Protection</a></li>
+          <li><a href="#s4">Access Control</a></li>
+          <li><a href="#s5">Network Security</a></li>
+          <li><a href="#s6">Vulnerability Management</a></li>
+          <li><a href="#s7">Incident Response</a></li>
+          <li><a href="#s8">Compliance and Training</a></li>
+          <li><a href="#s9">Third-Party Management</a></li>
+        </ol>
+      </div>
+
+      <h2 id="s1">Introduction</h2>
+      <p>Newton is committed to protecting the data of our clients and their customers. This Security Policy
+        outlines the measures we have implemented to safeguard the confidentiality, integrity, and
+        availability of the information entrusted to us.</p>
+
+      <h2 id="s2">Scope</h2>
+      <p>This policy applies to all employees and advertisers who access Newton systems. It covers all
+        systems, networks, and applications used to support the service.</p>
+
+      <h2 id="s3">Data Protection</h2>
+      <p><b>Data Classification.</b> Data is classified into three categories — Public, Internal, and
+        Confidential — and handled according to its sensitivity. The personal data we collect is limited to
+        names and email addresses used to identify advertisers.</p>
+      <p><b>Data Encryption.</b> Our database is encrypted using AES-256 with deletion protection enabled.
+        File storage is protected using Google Cloud Bucket security. Data in transit is encrypted using
+        TLS 1.2 or higher.</p>
+      <p><b>Data Hosting.</b> Our service is built on Google Cloud Platform using a 3-tier architecture with
+        logical segregation of data.</p>
+
+      <h2 id="s4">Access Control</h2>
+      <p><b>User Access Management.</b> Multi-factor authentication is required for access. We apply the
+        principle of least privilege, enforce strong passwords, and enable session management.</p>
+      <p><b>Administrative Access.</b> Administrative access is limited to authorized personnel with
+        role-based access controls, and access logs are reviewed regularly.</p>
+
+      <h2 id="s5">Network Security</h2>
+      <p>Firewalls are configured to protect our systems, network segmentation is implemented, and
+        intrusion detection and prevention systems are deployed.</p>
+
+      <h2 id="s6">Vulnerability Management</h2>
+      <p>We apply patches regularly, with critical updates applied within 24 hours. We also conduct regular
+        security assessments and penetration testing.</p>
+
+      <h2 id="s7">Incident Response</h2>
+      <p>We maintain an incident response plan with documented procedures. In the event of a breach,
+        affected customers will be notified within 48 hours.</p>
+
+      <h2 id="s8">Compliance and Training</h2>
+      <p>Newton complies with GDPR and CCPA. Our employees receive regular security training.</p>
+
+      <h2 id="s9">Third-Party Management</h2>
+      <p>Third-party vendors are assessed and required to adhere to our security policies. Data sharing is
+        limited to Newton's infrastructure.</p>
+
+      <p style="margin-top:32px;">For any questions about this policy, contact us at
+        <a href="mailto:support@newtonco.ai">support@newtonco.ai</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="fbrand" data-i18n="foot_blurb">Newton by Affle — performance-driven iOS app growth.</span>
+      <a href="mailto:hello@example.com" data-i18n="foot_contact">hello@example.com</a>
+    </div>
+  </footer>
+
+  <!-- ============ Minimal i18n for the shared header/footer (legal body is EN) ============ -->
+  <script>
+    var I18N = {
+      en: {
+        _title: "Security Policy — Newton",
+        nav_opp: "Why Apple Ads", nav_platform: "Why Newton", nav_compare: "Newton vs in-house",
+        nav_pricing: "Pricing", nav_proof: "Proof", nav_demo: "Request Newton demo",
+        header_cta: "Request Newton demo",
+        foot_blurb: "Newton by Affle — performance-driven iOS app growth.", foot_contact: "hello@example.com"
+      },
+      vi: {
+        _title: "Chính sách bảo mật — Newton",
+        nav_opp: "Vì sao chọn Apple Ads", nav_platform: "Vì sao chọn Newton", nav_compare: "Newton vs In-house",
+        nav_pricing: "Bảng giá", nav_proof: "Bằng chứng", nav_demo: "Yêu cầu demo Newton",
+        header_cta: "Yêu cầu demo Newton",
+        foot_blurb: "Newton by Affle — tăng trưởng app iOS dựa trên hiệu suất.", foot_contact: "hello@example.com"
+      }
+    };
+    var en = I18N.en, curLang = "en";
+    function applyLang(lang) {
+      curLang = I18N[lang] ? lang : "en";
+      var d = I18N[curLang];
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var v = d[el.getAttribute("data-i18n")]; if (v == null) v = en[el.getAttribute("data-i18n")];
+        if (v != null) el.textContent = v;
+      });
+      if (d._title || en._title) document.title = d._title || en._title;
+      document.querySelectorAll(".lang-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-lang") === curLang);
+      });
+      try { localStorage.setItem("newton_lang", curLang); } catch (e) {}
+    }
+    document.querySelectorAll(".lang-btn").forEach(function (b) {
+      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+    });
+    // Mobile nav
+    var siteHeader = document.querySelector(".site-header");
+    var navToggle = document.querySelector(".nav-toggle");
+    if (siteHeader && navToggle) {
+      navToggle.addEventListener("click", function () {
+        var open = siteHeader.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      siteHeader.querySelectorAll("#site-nav a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          siteHeader.classList.remove("nav-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+    var saved = "en";
+    try { saved = localStorage.getItem("newton_lang") || "en"; } catch (e) {}
+    applyLang(saved);
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="_title">The 2026 Apple Ads Report — Newton</title>
+  <meta name="description" data-i18n="_desc" content="The 2026 Apple Ads Report from Newton — releasing August 2026. What Apple's new multi-slot App Store auction means for your CPI, and how Vietnamese businesses win high-value Apple users. Official Apple Ads Partner." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ============ Report-page-specific styles (layered on style.css) ============ -->
+  <style>
+    /* Two-column hero: report pitch + "what's inside" (left) · form card (right).
+       Grid areas keep the form pinned top-right on desktop while the intro and
+       the checklist flow continuously down the left column (AppsFlyer style). */
+    .rhero { background: linear-gradient(180deg, var(--light), #fff); padding: 48px 0 52px; }
+    .rhero-grid {
+      display: grid; grid-template-columns: 1.1fr .9fr;
+      grid-template-areas: "intro form" "list form";
+      column-gap: 44px; row-gap: 30px; align-items: start;
+    }
+    .rhero-copy { grid-area: intro; }
+    .rform-card { grid-area: form; }
+    .rhero-list { grid-area: list; }
+    .rhero-copy .eyebrow {
+      color: var(--coral); font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; font-size: 12.5px;
+    }
+    .rhero-copy h1 {
+      color: var(--navy); font-size: clamp(30px, 4.6vw, 46px);
+      line-height: 1.08; font-weight: 800; margin: 12px 0 16px;
+    }
+    .rhero-copy .lede { font-size: clamp(17px, 2vw, 20px); color: var(--ink); margin: 0 0 20px; max-width: 560px; }
+    .rhero-copy .lede .accent { color: var(--teal-dark); font-weight: 700; }
+    .rhero-trust { margin: 20px 0 0; color: var(--muted); font-size: 13.5px; font-weight: 600; }
+    .rhero-trust b { color: var(--navy); }
+
+    /* "What's inside" — checklist continuing under the intro (left column) */
+    .rhero-list .kicker { margin-bottom: 8px; }
+    .rhero-list h2 { color: var(--navy); font-size: clamp(20px, 2.6vw, 27px); font-weight: 800; line-height: 1.15; margin: 0 0 16px; }
+    .inside-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; max-width: 560px; }
+    .inside-list li { position: relative; padding-left: 32px; color: var(--ink); font-size: 15.5px; }
+    .inside-list li b { color: var(--navy); }
+    .inside-list li::before {
+      content: "✓"; position: absolute; left: 0; top: 0;
+      width: 22px; height: 22px; border-radius: 999px; background: var(--teal); color: #fff;
+      font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Form card */
+    .rform-card {
+      background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 30px 28px;
+      box-shadow: 0 18px 50px rgba(0,12,71,.10);
+    }
+    .rform-card h2 { color: var(--navy); font-size: 21px; font-weight: 800; margin: 0 0 4px; }
+    .rform-card .rform-sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+    .rform .field { margin-bottom: 14px; }
+    .rform label { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 5px; display: block; }
+    .rform label span { color: var(--coral); }
+    .rform input, .rform select {
+      width: 100%; font-family: var(--font); font-size: 15px; color: var(--ink);
+      border: 1px solid var(--hair); border-radius: 9px; padding: 11px 12px; background: #fff;
+    }
+    .rform input:focus, .rform select:focus {
+      outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(38,169,164,.15);
+    }
+    .rform .btn { width: 100%; margin-top: 6px; }
+    .rform-privacy { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 14px 0 0; text-align: left; }
+    .rform-privacy a { color: var(--teal-dark); font-weight: 700; text-decoration: underline; }
+    .rform-privacy a:hover { color: var(--teal); }
+    .rform-status { color: var(--green); font-weight: 800; margin-top: 14px; text-align: center; }
+
+    /* Proof + secondary CTA */
+    .rproof { background: #fff; text-align: center; }
+    .rproof .quoteband { max-width: 760px; margin: 0 auto 26px; text-align: left; }
+    .rproof-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .rproof-secondary { color: var(--muted); font-size: 14.5px; }
+    .rproof-secondary a { color: var(--teal-dark); font-weight: 800; text-decoration: none; }
+    .rproof-secondary a:hover { text-decoration: underline; }
+
+    @media (max-width: 860px) {
+      /* Stack: intro → form → checklist (keeps the form high for conversion) */
+      .rhero-grid { grid-template-columns: 1fr; grid-template-areas: "intro" "form" "list"; row-gap: 26px; }
+    }
+    @media (max-width: 520px) {
+      .rform-card { padding: 26px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER (shared menu; section links point back to index.html) ============ -->
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="media/newton_logo.png" alt="Newton" /></a>
+    <nav id="site-nav">
+      <a href="index.html#opportunity" data-i18n="nav_opp">Why Apple Ads</a>
+      <a href="index.html#platform" data-i18n="nav_platform">Why Newton</a>
+      <a href="index.html#compare" data-i18n="nav_compare">Newton vs in-house</a>
+      <a href="index.html#cpcu" data-i18n="nav_pricing">Pricing</a>
+      <a href="index.html#proof" data-i18n="nav_proof">Proof</a>
+      <a href="index.html#lead" data-i18n="nav_demo">Request Newton demo</a>
+    </nav>
+    <div class="header-right">
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+      <button class="lang-btn" type="button" data-lang="vi">VI</button>
+      <a class="btn btn-primary btn-sm" href="index.html#lead" data-i18n="header_cta">Request Newton demo</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO (two columns: pitch + form) ============ -->
+  <section class="rhero" id="lead">
+    <div class="wrap">
+      <div class="rhero-grid">
+        <!-- Left: report pitch -->
+        <div class="rhero-copy">
+          <p class="eyebrow" data-i18n="rp_eyebrow">REPORT · COMING AUGUST 2026</p>
+          <h1 data-i18n="rp_h1">The 2026 Apple Ads Report</h1>
+          <p class="lede" data-i18n="rp_lede">Apple just rebuilt the App Store auction — <span class="accent">multiple ad slots per search</span>, rising costs, and the highest-intent users in mobile. This will be the benchmark for what it means to your CPI, and how Vietnamese businesses win high-value Apple users.</p>
+          <p class="rhero-trust" data-i18n="rp_trust">From Newton — <b>Official Apple Ads Partner</b>, part of Affle · 3,000+ app growth campaigns.</p>
+        </div>
+
+        <!-- Right: gated-report form -->
+        <div class="rform-card">
+          <h2 data-i18n="rp_form_title">Be first to get the report</h2>
+          <form id="reportForm" class="rform">
+            <input type="hidden" name="request_type" value="report" />
+
+            <div class="field">
+              <label data-i18n="label_email">Work email <span>*</span></label>
+              <input name="email" type="email" required />
+            </div>
+            <div class="field">
+              <label data-i18n="label_name">Name <span>*</span></label>
+              <input name="full_name" required />
+            </div>
+            <div class="field">
+              <label data-i18n="label_vertical">Vertical <span>*</span></label>
+              <select name="industry" required>
+                <option value="" data-i18n="opt_select">Select…</option>
+                <option data-i18n="vert_1">Gaming / Hyper-casual</option>
+                <option data-i18n="vert_2">Fintech / Crypto</option>
+                <option data-i18n="vert_3">E-commerce</option>
+                <option data-i18n="vert_4">Utility / Subscription</option>
+                <option data-i18n="vert_5">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="label_running">Are you running Apple Ads? <span>*</span></label>
+              <select name="running_apple_ads" required>
+                <option value="" data-i18n="opt_select">Select…</option>
+                <option data-i18n="run_1">Yes, actively</option>
+                <option data-i18n="run_2">Testing / just started</option>
+                <option data-i18n="run_3">Not yet — planning to</option>
+                <option data-i18n="run_4">No</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit" data-i18n="rp_submit">Get early access</button>
+            <p class="rform-privacy" data-i18n="rp_privacy">Your privacy is important to us. We may use your information to occasionally contact you about our products, services and events. You can opt out anytime. To learn more please visit our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            <p class="rform-status" id="reportStatus" hidden data-i18n="rp_thanks">Thanks — you're on the list. We'll email you the 2026 Apple Ads Report as soon as it's released in August 2026.</p>
+          </form>
+        </div>
+
+        <!-- Left column, continued: what's inside (flows under the intro) -->
+        <div class="rhero-list">
+          <p class="kicker" data-i18n="rp_inside_kicker">What's inside</p>
+          <h2 data-i18n="rp_inside_title">The questions the 2026 report answers.</h2>
+          <ul class="inside-list">
+            <li data-i18n="rp_in1"><b>The new App Store auction</b> — what Apple's multi-slot search rollout changes, and where installs happen now.</li>
+            <li data-i18n="rp_in2"><b>What Apple Ads really costs in 2026</b> — the full cost-per-tap &amp; cost-per-acquisition benchmark, by vertical.</li>
+            <li data-i18n="rp_in3"><b>Why it converts when feeds don't</b> — reaching users at the moment of intent.</li>
+            <li data-i18n="rp_in4"><b>The scale of App Store intent</b> — how much high-intent search traffic is in play every week.</li>
+            <li data-i18n="rp_in5"><b>What an iOS user is worth</b> — the in-app spend &amp; LTV gap versus Android.</li>
+            <li data-i18n="rp_in6"><b>The US window for Vietnam's studios</b> — and how pay-for-conversion (CPCU) de-risks it.</li>
+            <li data-i18n="rp_in7"><b>Case studies &amp; best practices</b> in Apple Ads for your vertical.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAND ============ -->
+  <div class="trustband">
+    <div class="wrap">
+      <span class="ti" data-i18n="tb1"><b>Official Apple Ads Partner</b></span>
+      <span class="dot">·</span>
+      <span class="ti" data-i18n="tb2"><b>3,000+ App Growth Campaigns</b> across gaming, finance &amp; e-commerce</span>
+      <span class="dot">·</span>
+      <span class="ti" data-i18n="tb3">Part of <b>Affle</b> — 500+ customers, 20+ cities</span>
+      <span class="dot">·</span>
+      <span class="ti" data-i18n="tb4">Trusted by <b>Vietnamese industry leaders</b></span>
+    </div>
+  </div>
+
+  <!-- ============ PROOF + SECOND CTA ============ -->
+  <section class="rproof">
+    <div class="wrap">
+      <div class="quoteband">
+        <q data-i18n="rp_quote">By leveraging Newton's AI-powered Apple Ads Campaign Management Platform, Taj Rummy successfully targeted high-value iOS users, achieving exceptional cost efficiency and exponential growth.</q>
+        <div class="who" data-i18n="rp_who">— Bhanu Chander, Digital Marketing Manager, Taj Rummy</div>
+      </div>
+      <div class="rproof-cta">
+        <button class="btn btn-primary btn-lg" data-scroll="#lead" data-i18n="rp_proof_cta">Get early access →</button>
+        <p class="rproof-secondary" data-i18n="rp_proof_secondary">Want to explore the Vietnamese case studies in your vertical? <a href="index.html#lead">Talk to a Newton strategist →</a></p>
+      </div>
+      <p class="disclaimer" data-i18n="rp_disclaimer">Benchmarks are directional and vary by app, market and budget; full sources are cited inside the report.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="fbrand" data-i18n="foot_blurb">Newton by Affle — performance-driven iOS app growth.</span>
+      <a href="mailto:hello@example.com" data-i18n="foot_contact">hello@example.com</a>
+    </div>
+  </footer>
+
+  <!-- ============ CONTENT (load EN first as fallback) ============ -->
+  <script src="report.ENcontent.js"></script>
+  <script src="report.VIcontent.js"></script>
+  <script>
+    var I18N = window.I18N || { en: {}, vi: {} };
+    var en = I18N.en || {};
+    var curLang = "en";
+
+    // Swap copy for the chosen language; fall back to EN, then to inline HTML.
+    function applyLang(lang) {
+      curLang = (I18N[lang]) ? lang : "en";
+      var d = I18N[curLang] || {};
+      function pick(k) { return (d[k] != null) ? d[k] : (en[k] != null ? en[k] : null); }
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var v = pick(el.getAttribute("data-i18n"));
+        if (v != null) el.innerHTML = v;
+      });
+      if (pick("_title")) document.title = pick("_title");
+      document.documentElement.lang = curLang;
+
+      document.querySelectorAll(".lang-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-lang") === curLang);
+      });
+      try { localStorage.setItem("newton_lang", curLang); } catch (e) {}
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(function (b) {
+      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+    });
+
+    // ---- Mobile nav (hamburger) ----
+    var siteHeader = document.querySelector(".site-header");
+    var navToggle = document.querySelector(".nav-toggle");
+    if (siteHeader && navToggle) {
+      navToggle.addEventListener("click", function () {
+        var open = siteHeader.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      siteHeader.querySelectorAll("#site-nav a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          siteHeader.classList.remove("nav-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    // Smooth-scroll for [data-scroll] buttons (in-page anchors only).
+    document.querySelectorAll("[data-scroll]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var t = document.querySelector(el.getAttribute("data-scroll"));
+        if (t) t.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // ---- Report form → Google Apps Script (same endpoint as index.html) ----
+    var FORM_ENDPOINT = "https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec";
+    var form = document.getElementById("reportForm");
+
+    // Reject free / personal email providers — only accept work emails.
+    var FREE_EMAIL_DOMAINS = [
+      "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "ymail.com",
+      "hotmail.com", "hotmail.co.uk", "outlook.com", "live.com", "msn.com",
+      "icloud.com", "me.com", "mac.com", "aol.com", "proton.me", "protonmail.com",
+      "gmx.com", "zoho.com", "yandex.com", "mail.com", "qq.com", "163.com", "126.com"
+    ];
+    function i18nMsg(key) {
+      var I = window.I18N || {};
+      var d = I[curLang] || {};
+      return (d[key] != null) ? d[key] : ((I.en || {})[key] || "");
+    }
+    var emailInput = form.querySelector('input[name="email"]');
+    function isFreeEmail(value) {
+      var at = value.lastIndexOf("@");
+      if (at < 0) return false;
+      var domain = value.slice(at + 1).trim().toLowerCase();
+      return FREE_EMAIL_DOMAINS.indexOf(domain) !== -1;
+    }
+    if (emailInput) {
+      emailInput.addEventListener("input", function () { emailInput.setCustomValidity(""); });
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (emailInput) {
+        emailInput.setCustomValidity("");
+        if (isFreeEmail(emailInput.value)) {
+          emailInput.setCustomValidity(i18nMsg("err_work_email"));
+          emailInput.reportValidity();
+          return;
+        }
+      }
+      var data = new FormData(form);
+      fetch(FORM_ENDPOINT, { method: "POST", body: data })
+        .then(function () {
+          form.reset();
+          document.getElementById("reportStatus").hidden = false;
+        })
+        .catch(function () {
+          alert("Something went wrong — please try again.");
+        });
+    });
+
+    // Restore saved language (default EN); shared with index.html via localStorage.
+    var saved = "en";
+    try { saved = localStorage.getItem("newton_lang") || "en"; } catch (e) {}
+    applyLang(saved);
+  </script>
+</body>
+</html>
