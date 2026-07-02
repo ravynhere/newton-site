@@ -75,5 +75,4 @@ window.I18N.en = {
 
   /* ---- footer ---- */
   foot_blurb: `Newton by Affle — performance-driven iOS app growth.`,
-  foot_contact: `hello@example.com`,
 };

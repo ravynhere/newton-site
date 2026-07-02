@@ -198,5 +198,4 @@ window.I18N.vi = {
 
   /* ---- footer ---- */
   foot_blurb: `Newton by Affle — tăng trưởng app iOS dựa trên hiệu suất.`,
-  foot_contact: `hello@example.com`,
 };

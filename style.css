@@ -329,6 +329,9 @@ section { padding: 52px 0; }
 .site-footer a { color: #fff; text-decoration: none; }
 .site-footer .fbrand { display: flex; align-items: center; gap: 9px; }
 .site-footer .fbrand img { height: 22px; }
+.site-footer .tg-link { display: inline-flex; align-items: center; color: #fff; opacity: .85; transition: opacity .15s ease; }
+.site-footer .tg-link:hover { opacity: 1; }
+.site-footer .tg-icon { display: block; }
 
 /* ---- responsive ---- */
 @media (max-width: 860px) {
