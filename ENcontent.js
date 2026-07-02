@@ -122,7 +122,8 @@ window.I18N.en = {
 
   /* ---- proof ---- */
   proof_kicker: `Proof`,
-  proof_title: `Apps that grew with Newton.`,
+  proof_title: `Trusted by industry leaders`,
+  proof_cta: `Get the case studies →`,
   case1_badge: `Gaming · US / competitive`,
   case1_app: `Taj Rummy`,
   case1_l1: `scale from non-brand`,
@@ -193,4 +194,5 @@ window.I18N.en = {
 
   /* ---- footer ---- */
   foot_blurb: `Newton by Affle — performance-driven iOS app growth.`,
+  foot_contact_label: `Contact us:`,
 };

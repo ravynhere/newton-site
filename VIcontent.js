@@ -126,8 +126,9 @@ window.I18N.vi = {
   cpcu_cta: `Liên hệ chúng tôi`,
 
   /* ---- proof ---- */
-  proof_kicker: `Câu chuyện thành công`,
-  proof_title: `Các ứng dụng tăng trưởng cùng Newton`,
+  proof_kicker: `Bằng chứng`,
+  proof_title: `Được các thương hiệu hàng đầu tin dùng`,
+  proof_cta: `Nhận case study →`,
   case1_badge: `Game · Mỹ / cạnh tranh cao`,
   case1_app: `Taj Rummy`,
   case1_l1: `mở rộng từ các từ khoá non-brand`,
@@ -198,4 +199,5 @@ window.I18N.vi = {
 
   /* ---- footer ---- */
   foot_blurb: `Newton by Affle — tăng trưởng app iOS dựa trên hiệu suất.`,
+  foot_contact_label: `Liên hệ:`,
 };

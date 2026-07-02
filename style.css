@@ -261,6 +261,31 @@ section { padding: 52px 0; }
 
 /* ---- proof / case studies ---- */
 .proof { background: var(--light); }
+.proof-title { max-width: none; }
+
+/* ---- proof: client logo marquee (auto-sliding, ecomobi-style) ---- */
+.logo-marquee {
+  position: relative; overflow: hidden; margin-top: 42px; width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.logo-track {
+  display: flex; align-items: center; width: max-content;
+  animation: logo-scroll 42s linear infinite; will-change: transform;
+}
+.logo-marquee:hover .logo-track { animation-play-state: paused; }
+.logo-chip { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; height: 60px; padding: 0 38px; }
+.logo-track img {
+  height: 42px; width: auto; max-width: 180px; object-fit: contain; display: block;
+}
+/* square/stacked marks read small at a fixed height — let them run taller */
+.logo-track img[alt="ABI Studio"],
+.logo-track img[alt="Bazooka"],
+.logo-track img[alt="Go2Joy"] { height: 56px; }
+.logo-wordmark { color: var(--muted); font-weight: 800; font-size: 22px; letter-spacing: -.01em; white-space: nowrap; }
+@keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
+.proof-cta-row { display: flex; justify-content: center; margin-top: 44px; }
 .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .ccard { background: var(--navy); color: #fff; border-radius: 16px; padding: 26px; }
 .ccard .badge { font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--amber); }
@@ -329,9 +354,11 @@ section { padding: 52px 0; }
 .site-footer a { color: #fff; text-decoration: none; }
 .site-footer .fbrand { display: flex; align-items: center; gap: 9px; }
 .site-footer .fbrand img { height: 22px; }
-.site-footer .tg-link { display: inline-flex; align-items: center; color: #fff; opacity: .85; transition: opacity .15s ease; }
-.site-footer .tg-link:hover { opacity: 1; }
-.site-footer .tg-icon { display: block; }
+.site-footer .foot-contact { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+.site-footer .foot-contact-label { color: #b9c0db; }
+.site-footer .social-link { display: inline-flex; align-items: center; color: #fff; opacity: .85; transition: opacity .15s ease, transform .15s ease; }
+.site-footer .social-link:hover { opacity: 1; transform: translateY(-1px); }
+.site-footer .social-link svg { display: block; }
 
 /* ---- responsive ---- */
 @media (max-width: 860px) {
